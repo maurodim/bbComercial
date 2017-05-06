@@ -23,9 +23,11 @@ public class ArticulosMod extends javax.swing.JInternalFrame {
     private Double ajuste=0.00;
     public static ArrayList combo;
     private ArrayList lstPorSuc=new ArrayList();
+    private Double recargo;
 
     public ArticulosMod(Articulos art) {
         arti=art;
+        recargo=0.00;
         Editables edi=new Articulos();
         Articulos arr=new Articulos();
         lstPorSuc=edi.ListarPorSucursal(arti);
@@ -41,7 +43,7 @@ public class ArticulosMod extends javax.swing.JInternalFrame {
         this.jTextField1.setText(arti.getDescripcionArticulo());
         
         this.jTextField2.setText(String.valueOf(totalActual));
-        this.jTextField3.setText(String.valueOf(arti.getStockMinimo()));
+        this.jTextField3.setText(Numeros.ReConvertirEnCoeficiente(arti.getRecargo()));
         this.jTextField4.setText(String.valueOf(arti.getPrecioDeCosto()));
         this.jTextField5.setText(String.valueOf(arti.getPrecioUnitarioNeto()));
         this.jTextField7.setText(String.valueOf(arti.getCodigoDeBarra()));
@@ -127,19 +129,29 @@ public class ArticulosMod extends javax.swing.JInternalFrame {
 
         jTextField2.setText("0");
 
-        jLabel3.setText("Stock Mínimo :");
+        jLabel3.setText("<html>Porcentaje de Ganancia:<br>Presione ENTER para confirmar</html>");
 
         jTextField3.setText("0");
+        jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField3KeyPressed(evt);
+            }
+        });
 
         jLabel4.setText("Precio de Costo:");
 
         jTextField4.setText("0");
+        jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField4KeyPressed(evt);
+            }
+        });
 
         jLabel5.setText("Precio de Venta :");
 
         jTextField5.setText("0");
 
-        jLabel6.setText("Costo Servicio :");
+        jLabel6.setText("Precio Mayorista:");
 
         jTextField6.setText("0");
         jTextField6.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -160,6 +172,7 @@ public class ArticulosMod extends javax.swing.JInternalFrame {
         jCheckBox1.setText("Modifica Precio SI/NO");
 
         jCheckBox2.setText("Con servicio despues de 23 hs?SI / NO");
+        jCheckBox2.setEnabled(false);
 
         jButton2.setText("INHABILITAR");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -300,9 +313,9 @@ public class ArticulosMod extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
@@ -320,7 +333,7 @@ public class ArticulosMod extends javax.swing.JInternalFrame {
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
+                .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -359,14 +372,16 @@ public class ArticulosMod extends javax.swing.JInternalFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel2)
                                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(22, 22, 22)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel4)
                                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(13, 13, 13)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(3, 3, 3)
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel5)
@@ -419,8 +434,8 @@ public class ArticulosMod extends javax.swing.JInternalFrame {
         arti.setDescripcionArticulo(this.jTextField1.getText().toUpperCase());
         Double cant=Numeros.ConvertirStringADouble(this.jTextField2.getText());
         arti.setStockActual(cant);
-        cant=Numeros.ConvertirStringADouble(this.jTextField3.getText());
-        arti.setStockMinimo(cant);
+        cant=Numeros.ConvertirEnCoeficiente(Numeros.ConvertirStringADouble(this.jTextField3.getText()));
+        arti.setRecargo(cant);
         cant=Numeros.ConvertirStringADouble(this.jTextField4.getText());
         arti.setPrecioDeCosto(cant);
         cant=Numeros.ConvertirStringADouble(this.jTextField5.getText());
@@ -547,6 +562,25 @@ public class ArticulosMod extends javax.swing.JInternalFrame {
         }
         this.jTextField8.requestFocus();
     }//GEN-LAST:event_jComboBox1FocusLost
+
+    private void jTextField4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyPressed
+        
+    }//GEN-LAST:event_jTextField4KeyPressed
+
+    private void jTextField3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            recargo=Numeros.ConvertirStringADouble(this.jTextField3.getText());
+            recargo=Numeros.ConvertirEnCoeficiente(recargo);
+            Double costo=Numeros.ConvertirStringADouble(this.jTextField4.getText());
+            Double vta=costo * recargo;
+            this.jTextField5.setText(Numeros.ConvertirNumero(vta));
+            this.jTextField6.setText(Numeros.ConvertirNumero(vta));
+            this.jTextField5.selectAll();
+            this.jTextField5.requestFocus();
+            
+            
+        }
+    }//GEN-LAST:event_jTextField3KeyPressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

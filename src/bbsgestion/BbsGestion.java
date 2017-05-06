@@ -5,6 +5,7 @@
 package bbsgestion;
 
 import Compras.Remitos;
+import Configuracion.Propiedades;
 import Sucursales.Usuarios;
 import interfaceGraficas.Inicio;
 import interfaceGraficas.LoguinBbsGestion;
@@ -17,6 +18,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import objetos.ConeccionLocal;
@@ -31,14 +33,14 @@ public class BbsGestion {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws FileNotFoundException, IOException {
+    public static void main(String[] args) throws FileNotFoundException, IOException, ParseException {
         /*
         ArrayList usuariosList=new ArrayList();
         Usuarios usuarios=new Usuarios();
         usuariosList=usuarios.listarUsuario();
         */
         File folder=new File("C:\\Gestion");
-        File archivos=new File("C:\\Informes");
+        File archivos=new File("Informes");
         File bases=new File("C:\\Gestion\\DB");
         //File imagenes=new File("C:\\Gestion\\imagenes\\saynomore.jpg");
         File bk;
@@ -49,9 +51,6 @@ public class BbsGestion {
         FileReader fr=null;
         BufferedReader br=null;
         if(!bases.isDirectory()){
-            JOptionPane.showMessageDialog(null,"INICIANDO CONFIGURACION Y CREACION DE LA BASE DE DATOS");
-            bases.mkdirs();
-            ConeccionLocal.CrearDb();
             
         }
         if(!folder.isDirectory()){
@@ -120,6 +119,7 @@ public class BbsGestion {
             e2.printStackTrace();
          }
       }
+        Propiedades.CargarPropiedades();
         LoguinBbsGestion lBb=new LoguinBbsGestion();
         lBb.setVisible(true);
         lBb.pack();

@@ -6,7 +6,7 @@ package objetos;
 
 import Conversores.Numeros;
 import Impresiones.Impresora;
-import facturacion.clientes.ClientesTango;
+import Clientes.Objetos.ClientesTango;
 import interfaceGraficas.Inicio;
 import interfaces.Transaccionable;
 import interfacesPrograma.Facturar;
@@ -783,6 +783,16 @@ public class Comprobantes implements Facturar{
     @Override
     public Object cargarPorCodigoAsignado(Integer id) {
         throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public ArrayList listadoBusquedaMayorista(String criterio) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Object cargarPorCodigoDeBarraMayorista(String codigoDeBarra) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

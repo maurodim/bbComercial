@@ -366,13 +366,13 @@ public class Impresora {
         //pagina.drawImage(imagen,123,20,174,93,null);
         pagina.setFont(fuente6);
         pagina.setColor(Color.black);
-        pagina.drawString("COMPROBANTE N° 00"+Inicio.deposito.getNumero()+"-000"+caja.getNumero(),20,130);
+        pagina.drawString("COMPROBANTE N° 00"+Inicio.deposito.getNumero()+"-000"+caja.getNumero(),40,130);
         pagina.setFont(fuente11);
         pagina.drawString("REMITO INTERNO", 320,130);
         pagina.setFont(fuente);
-        pagina.drawString("FECHA :"+fec, 20,140);
+        pagina.drawString("FECHA :"+fec, 40,140);
         pagina.setFont(fuente6);
-        pagina.drawString("Deposito Origen :"+caja.getIdDeposito(),20,150);
+        pagina.drawString("Deposito Origen :"+caja.getIdDeposito(),40,150);
         //pagina.drawString("Deposito Origen :"+caja.getDepositoOrigen(),20,160);
         pagina.setFont(fuente);
         pagina.drawString("HORA :"+hrs,320,140);
@@ -384,7 +384,7 @@ public class Impresora {
         //pagina.drawString("RETIRO DE EFECTIVO ", 50,280);
         //formulario derecho
         pagina.setFont(fuente6);
-        pagina.drawString("ARTICULO", 20,190);
+        pagina.drawString("ARTICULO", 40,190);
         pagina.drawString("CANTIDAD", 250,190);
         //pagina.drawString("COSTO", 330,190);
         pagina.drawString("VENTA",410,190);
@@ -404,7 +404,7 @@ public class Impresora {
         Double costoTotal=0.00;
         while(itRem1.hasNext()){
             Articulos articulo=(Articulos)itRem1.next();
-            pagina.drawString(articulo.getDescripcionArticulo(), 20,columna);
+            pagina.drawString(articulo.getDescripcionArticulo(), 40,columna);
             cann=String.valueOf(articulo.getCantidad());
             costo=String.valueOf(articulo.getPrecioDeCosto());
             venta=String.valueOf(articulo.getPrecioUnitario());

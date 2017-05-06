@@ -355,7 +355,7 @@ public class FacturaProveedor implements Comprobable,Facturar,Adeudable{
     }
 
     @Override
-    public Object PagarComprobante(Object objeto) {
+    public Object PagarComprobante(Object objeto,Integer idOp) {
        FacturaProveedor factProv=(FacturaProveedor)objeto;
        numeroActualRecibo();
        numeroRecibo++;
@@ -371,6 +371,16 @@ public class FacturaProveedor implements Comprobable,Facturar,Adeudable{
        tra.guardarRegistro(sql);
        GuardarNumeroRecibo();
        return factProv;
+    }
+
+    @Override
+    public ArrayList listadoBusquedaMayorista(String criterio) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Object cargarPorCodigoDeBarraMayorista(String codigoDeBarra) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

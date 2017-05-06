@@ -4,6 +4,7 @@
  */
 package interfaceGraficas;
 
+import Clientes.Pantallas.AbmClientes;
 import Actualizaciones.Actualiza;
 import Actualizaciones.Actualiza1;
 import Actualizaciones.BkDeConeccion;
@@ -19,7 +20,7 @@ import Sucursales.Cajas;
 import Sucursales.ListasDePrecios;
 import Sucursales.Sucursales;
 import Sucursales.Usuarios;
-import facturacion.clientes.ClientesTango;
+import Clientes.Objetos.ClientesTango;
 import facturacion.pantallas.IngresoDePedidos;
 import facturacion.pantallas.IngresoNtaCred;
 import interfacesPrograma.Cajeables;
@@ -227,6 +228,7 @@ public class Inicio extends javax.swing.JFrame {
 
         jMenuItem8.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem8.setText("Rubros");
+        jMenuItem8.setEnabled(false);
         jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem8ActionPerformed(evt);
@@ -236,6 +238,7 @@ public class Inicio extends javax.swing.JFrame {
 
         jMenuItem9.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem9.setText("Listas de Precios");
+        jMenuItem9.setEnabled(false);
         jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem9ActionPerformed(evt);
@@ -245,6 +248,7 @@ public class Inicio extends javax.swing.JFrame {
 
         jMenuItem10.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem10.setText("Sucursales");
+        jMenuItem10.setEnabled(false);
         jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem10ActionPerformed(evt);
@@ -254,6 +258,7 @@ public class Inicio extends javax.swing.JFrame {
 
         jMenuItem11.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem11.setText("Depositos");
+        jMenuItem11.setEnabled(false);
         jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem11ActionPerformed(evt);
@@ -279,6 +284,7 @@ public class Inicio extends javax.swing.JFrame {
         jMenu1.add(jMenuItem21);
 
         jMenuItem24.setText("Blanquear Base");
+        jMenuItem24.setEnabled(false);
         jMenuItem24.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem24ActionPerformed(evt);
@@ -310,10 +316,12 @@ public class Inicio extends javax.swing.JFrame {
 
         jMenuItem13.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem13.setText("Consultas");
+        jMenuItem13.setEnabled(false);
         jMenu2.add(jMenuItem13);
 
         jMenuItem18.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem18.setText("Generar Remito Interno");
+        jMenuItem18.setEnabled(false);
         jMenuItem18.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem18ActionPerformed(evt);
@@ -322,6 +330,7 @@ public class Inicio extends javax.swing.JFrame {
         jMenu2.add(jMenuItem18);
 
         jMenuItem19.setText("Administracion Stock Por Deposito");
+        jMenuItem19.setEnabled(false);
         jMenu2.add(jMenuItem19);
 
         jMenuBar1.add(jMenu2);
@@ -367,6 +376,7 @@ public class Inicio extends javax.swing.JFrame {
 
         jMenuItem17.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Z, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem17.setText("Recibir Remito Interno");
+        jMenuItem17.setEnabled(false);
         jMenuItem17.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem17ActionPerformed(evt);
@@ -388,6 +398,7 @@ public class Inicio extends javax.swing.JFrame {
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem1.setText("Cambiar de Usuario");
+        jMenuItem1.setEnabled(false);
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -398,6 +409,7 @@ public class Inicio extends javax.swing.JFrame {
         jMenuBar1.add(jMenu4);
 
         jMenu5.setText("Parametros");
+        jMenu5.setEnabled(false);
 
         jMenuItem15.setText("Tipos de Accesos");
         jMenuItem15.addActionListener(new java.awt.event.ActionListener() {
@@ -434,8 +446,10 @@ public class Inicio extends javax.swing.JFrame {
         jMenuBar1.add(jMenu6);
 
         jMenu7.setText("Gastos Fijos");
+        jMenu7.setEnabled(false);
 
         jMenuItem22.setText("Administracion de Gastos Fijos");
+        jMenuItem22.setEnabled(false);
         jMenuItem22.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem22ActionPerformed(evt);
